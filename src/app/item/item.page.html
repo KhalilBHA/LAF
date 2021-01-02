@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Item Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="card">
+    <div class="img-wrapper">
+      <ion-img src="https://images.pexels.com/photos/109275/pexels-photo-109275.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"></ion-img>
+    </div>
+    <ion-card-content class="ion-text-left">                
+      <ion-card-title class="title">{{ lostItem?.title}}</ion-card-title>
+      <ion-card-subtitle>
+        <span>Category:</span> {{ lostItem?.category }}
+      </ion-card-subtitle>
+      <ion-card-subtitle *ngIf="lostItem?.brand">
+        <span>Brand:</span> {{ lostItem?.brand }}
+      </ion-card-subtitle>
+      <ion-card-subtitle *ngIf="lostItem?.model">
+        <span>Model:</span> {{ lostItem?.model }}
+      </ion-card-subtitle>
+      <ion-card-subtitle>
+        <span>Location:</span> {{ lostItem?.location }}
+      </ion-card-subtitle>
+      <ion-card-subtitle>
+        <span>Date:</span> {{ lostItem?.date }}
+      </ion-card-subtitle>
+      <ion-card-subtitle *ngIf="lostItem?.description">
+        <span>Description:</span> <br> {{ item?.description }}
+      </ion-card-subtitle>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,106 @@
+.required {
+    color: red;
+}
+
+.error {
+    color: red;
+    font-size: small;
+}
+
+ion-content {
+
+    --background: rgba(237, 242, 245, .8);
+  
+    .back-blob {
+      z-index: -1;
+      width: 600px;
+      position: absolute;
+      left: -50%;
+      top: 0;
+    }
+  
+    form {
+      margin-top: 100px;
+    }
+  
+    .wrap-input {
+      --background-color: rgba(255, 255, 255, .8);
+      border-radius: 20px;
+      margin-bottom: 26px;
+      box-shadow: 0 10px 30px 0px rgba(57, 71, 82, 0.12);
+    }
+  
+    .input {
+      display: block;
+      width: 100%;
+      background: transparent;
+      font-family: Josefin Sans;
+      font-size: 16px;
+      line-height: 1.2;
+      border: none;
+      outline: none;
+      height: 46px;
+      padding: 0 20px 0 23px; 
+    }
+  
+    .container-form-btn {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .form-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px;
+        width: 110px;
+        height: 41px;
+        --background: #394752;
+        --border-radius: 20px;
+        font-size: 14px;
+        text-transform: uppercase;
+        padding-top: 5px;
+        transition: all 0.4s;
+        --box-shadow: 0 10px 30px 0px rgba(57, 71, 82, 0.5);
+    }
+
+    .slide-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px;
+      width: 110px;
+      height: 41px;
+      --background: #394752;
+      --border-radius: 20px;
+      font-size: 14px;
+      text-transform: uppercase;
+      padding-top: 5px;
+      transition: all 0.4s;
+      --box-shadow: 0 10px 30px 0px rgba(57, 71, 82, 0.5);
+    }
+}
+
+ion-toolbar {
+    --background: transparent;
+  
+    ion-title {
+      padding: 20px 0 46px 0;
+      font-weight: 900;
+    }
+  
+    .back-circle {
+      z-index: -1;
+      width: 200px;
+      height: 200px;
+      background: #e5ecf1;
+      position: absolute;
+      border-radius: 50%;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      bottom: 0;
+  
+    }
+}

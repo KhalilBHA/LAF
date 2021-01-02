@@ -1,0 +1,250 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <div class="back-circle"></div>
+    <ion-title class="ion-text-center custom-font">Add Item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <svg class="back-blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#8295A3" d="M68.6,-33.5C81.6,-17.2,79.6,13.8,65.7,37.6C51.8,61.3,25.9,77.8,2.1,76.6C-21.7,75.4,-43.5,56.5,-54.2,34.6C-65,12.7,-64.8,-12.3,-53.9,-27.4C-43,-42.4,-21.5,-47.6,3.2,-49.4C27.9,-51.2,55.7,-49.7,68.6,-33.5Z" transform="translate(100 100)" />
+  </svg>
+
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col>
+        <ion-slides [options]="option">
+          <ion-slide>
+            <form [formGroup]="itemForm" class="ion-padding">
+              <ion-item class="wrap-input">
+                <ion-select value="Found" (ionChange)="itemTypeSelected($event)">
+                  <ion-select-option value="Lost">Lost</ion-select-option>
+                  <ion-select-option value="Found">Found</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <div class="container-form-btn">
+                <ion-button
+                  class="form-btn" (click)="goToSlide(1)">
+                Next
+                </ion-button>
+              </div>
+            </form>
+          </ion-slide>
+          <ion-slide>
+            <form [formGroup]="itemForm" class="ion-padding">
+              <ion-item class="wrap-input">
+                <ion-label position="floating">
+                  Title
+                  <span *ngIf="formInputIsRequired('title')" class="required">&#42;</span>
+                </ion-label>
+                <ion-input class="input" formControlName="title"></ion-input>
+              </ion-item>
+              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.title.errors?.required">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+                Title is Required!
+              </span>
+        
+              <ion-item class="wrap-input">
+                <ion-label>Category</ion-label>
+                <ion-select value="Other">
+                  <ion-select-option value="Phones">Phones</ion-select-option>
+                  <ion-select-option value="Watchs">Watchs</ion-select-option>
+                  <ion-select-option value="Electronics">Electronics</ion-select-option>
+                  <ion-select-option value="Wallets">Wallets</ion-select-option>
+                  <ion-select-option value="Documents">Documents</ion-select-option>
+                  <ion-select-option value="Pets">Pets</ion-select-option>
+                  <ion-select-option value="Other">Other</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <div class="container-form-btn">
+                <ion-button
+                  class="form-btn" (click)="goToSlide(0)">
+                  Back
+                </ion-button>
+                <ion-button
+                  class="form-btn" (click)="goToSlide(2)">
+                Next
+                </ion-button>
+              </div>
+            </form>
+          </ion-slide>
+          <ion-slide>
+            <form [formGroup]="itemForm" class="ion-padding">
+              <ion-item class="wrap-input">
+                <ion-label position="floating">Brand</ion-label>
+                <ion-input class="input"></ion-input>
+              </ion-item>
+        
+              <ion-item class="wrap-input">
+                <ion-label position="floating">Model</ion-label>
+                <ion-input class="input"></ion-input>
+              </ion-item>
+        
+              <ion-item class="wrap-input">
+                <ion-label position="floating">
+                  Date
+                  <span *ngIf="formInputIsRequired('date')" class="required">&#42;</span>
+                </ion-label>
+                <ion-input class="input" formControlName="date"></ion-input>
+              </ion-item>
+              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.date.errors?.required">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+                Date is Required!
+              </span>
+              <div class="container-form-btn">
+                <ion-button
+                  class="form-btn" (click)="goToSlide(1)">
+                  Back
+                </ion-button>
+                <ion-button
+                  class="form-btn" (click)="goToSlide(3)">
+                Next
+                </ion-button>
+              </div>
+            </form>
+          </ion-slide>
+          <ion-slide>
+            <form [formGroup]="itemForm" class="ion-padding">
+              <ion-item class="wrap-input">
+                <ion-label position="floating">
+                  Phone Number
+                  <span *ngIf="formInputIsRequired('phone')" class="required">&#42;</span>
+                </ion-label>
+                <ion-input class="input" formControlName="phone"></ion-input>
+              </ion-item>
+              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.phone.errors?.required">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+                Phone Number is Required!
+              </span>
+        
+              <ion-item class="wrap-input">
+                <ion-label position="floating">
+                  Location
+                  <span *ngIf="formInputIsRequired('location')" class="required">&#42;</span>
+                </ion-label>
+                <ion-input class="input" formControlName="location"></ion-input>
+              </ion-item>
+              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.location.errors?.required">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+                Location is Required!
+              </span>
+        
+              <ion-item class="wrap-input">
+                <ion-label position="floating">Description</ion-label>
+                <ion-input class="input"></ion-input>
+              </ion-item>
+
+              <div class="container-form-btn">
+                <ion-button
+                  class="form-btn" (click)="goToSlide(2)">
+                Back
+                </ion-button>
+                <ion-button
+                  class="form-btn" (click)="save()" 
+                  [disabled]="!this.itemForm.valid">
+                Add Item
+                </ion-button>
+              </div>
+            </form>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!--
+  <div class="ion-padding">
+    <form [formGroup]="itemForm" class="ion-padding">
+      <ion-item class="wrap-input">
+        <ion-label position="floating">
+          Title
+          <span *ngIf="formInputIsRequired('title')" class="required">&#42;</span>
+        </ion-label>
+        <ion-input class="input" formControlName="title"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.title.errors?.required">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        Title is Required!
+      </span>
+
+      <ion-list class="wrap-input">
+        <ion-item class="wrap-input">
+          <ion-label class="wrap-input">Category</ion-label>
+          <ion-select placeholder="Select One">
+            <ion-select-option value="Phones">Phones</ion-select-option>
+            <ion-select-option value="Watchs">Watchs</ion-select-option>
+            <ion-select-option value="Electronics">Electronics</ion-select-option>
+            <ion-select-option value="Wallets">Wallets</ion-select-option>
+            <ion-select-option value="Documents">Documents</ion-select-option>
+            <ion-select-option value="Pets">Pets</ion-select-option>
+            <ion-select-option value="Other">Other</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <ion-item class="wrap-input">
+        <ion-label position="floating">Brand</ion-label>
+        <ion-input class="input"></ion-input>
+      </ion-item>
+
+      <ion-item class="wrap-input">
+        <ion-label position="floating">Model</ion-label>
+        <ion-input class="input"></ion-input>
+      </ion-item>
+
+      <ion-item class="wrap-input">
+        <ion-label position="floating">
+          Date
+          <span *ngIf="formInputIsRequired('date')" class="required">&#42;</span>
+        </ion-label>
+        <ion-input class="input" formControlName="date"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.date.errors?.required">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        Date is Required!
+      </span>
+
+      <ion-item class="wrap-input">
+        <ion-label position="floating">
+          Phone Number
+          <span *ngIf="formInputIsRequired('phone')" class="required">&#42;</span>
+        </ion-label>
+        <ion-input class="input" formControlName="phone"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.phone.errors?.required">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        Phone Number is Required!
+      </span>
+
+      <ion-item class="wrap-input">
+        <ion-label position="floating">
+          Location
+          <span *ngIf="formInputIsRequired('location')" class="required">&#42;</span>
+        </ion-label>
+        <ion-input class="input" formControlName="location"></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.location.errors?.required">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        Location is Required!
+      </span>
+
+      <ion-item class="wrap-input">
+        <ion-label position="floating">Description</ion-label>
+        <ion-input class="input"></ion-input>
+      </ion-item>
+
+      <div class="container-form-btn">
+        <ion-button 
+          class="form-btn" (click)="save()" 
+          [disabled]="!this.itemForm.valid">
+        Add Item
+        </ion-button>
+      </div>
+      
+      
+    </form>
+  </div>
+  -->
+</ion-content>

@@ -1,7 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>
-      Blank
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +12,87 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Home</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-searchbar animated placeholder="Find Item"></ion-searchbar>
+
+  
+
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <div class="ion-padding-horizontal wrapper">
+        <h5>
+          Lost Items
+        </h5>
+      </div>
+      <ion-col>
+        <ion-slides [options]="option">
+          <ion-slide *ngFor="let item of lostItems, let i = index">
+            <ion-card class="card">
+              <div class="img-wrapper">
+                <ion-img src="https://images.pexels.com/photos/109275/pexels-photo-109275.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"></ion-img>
+              </div>
+              <ion-card-content class="ion-text-left">                
+                <ion-card-title class="title">{{ item.title }}</ion-card-title>
+                <ion-card-subtitle>{{ item.category }}</ion-card-subtitle>
+                <ion-card-subtitle>{{ item.location }}, {{ item.date }}</ion-card-subtitle>
+                <ion-icon 
+                  name="ellipsis-horizontal-outline" 
+                  style="color: teal;" 
+                  routerLink='/item/{{item.id}}'>
+                </ion-icon>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <div class="ion-padding-horizontal wrapper">
+        <h5>
+          Found Items
+        </h5>
+      </div>
+      <ion-col>
+        <ion-slides [options]="option">
+          <ion-slide *ngFor="let item of foundItems, let i = index">
+            <ion-card class="card">
+              <div class="img-wrapper">
+                <ion-img src="https://images.pexels.com/photos/109275/pexels-photo-109275.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"></ion-img>
+              </div>
+              <ion-card-content class="ion-text-left">                
+                <ion-card-title class="title">{{ item.title }}</ion-card-title>
+                <ion-card-subtitle>{{ item.category }}</ion-card-subtitle>
+                <ion-card-subtitle>{{ item.location }}, {{ item.date }}</ion-card-subtitle>
+                <ion-icon 
+                  name="ellipsis-horizontal-outline" 
+                  style="color: teal;" 
+                  routerLink='/item/{{item.id}}'>
+                </ion-icon>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button (click)="navToAddPage()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button (click)="navToAbout()">
+        <ion-icon name="help-circle-outline"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+
 </ion-content>
