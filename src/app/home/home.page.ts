@@ -16,6 +16,7 @@ export class HomePage {
     spaceBetween: -15
   }
 
+  //imageSource = "..\assets\img\LAFLogo.png";
   lostItems: LostItem[];
   foundItems: FoundItem[]
   type: string;

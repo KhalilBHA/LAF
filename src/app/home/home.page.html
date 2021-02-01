@@ -1,38 +1,35 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>
-      Home
+    <div class="back-circle"></div>
+    <ion-title class="ion-text-center custom-font">
+      <img alt="logo" height="40"   src="..\assets\icon\LAF-Logo2-Resized.png" >
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <svg class="back-blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#8295A3" d="M68.6,-33.5C81.6,-17.2,79.6,13.8,65.7,37.6C51.8,61.3,25.9,77.8,2.1,76.6C-21.7,75.4,-43.5,56.5,-54.2,34.6C-65,12.7,-64.8,-12.3,-53.9,-27.4C-43,-42.4,-21.5,-47.6,3.2,-49.4C27.9,-51.2,55.7,-49.7,68.6,-33.5Z" transform="translate(100 100)" />
+  </svg>
 
   <ion-searchbar animated placeholder="Find Item"></ion-searchbar>
-
-  
 
   <ion-grid class="ion-no-padding">
     <ion-row>
       <div class="ion-padding-horizontal wrapper">
-        <h5>
+        <h3>
           Lost Items
-        </h5>
+        </h3>
       </div>
       <ion-col>
         <ion-slides [options]="option">
           <ion-slide *ngFor="let item of lostItems, let i = index">
             <ion-card class="card">
               <div class="img-wrapper">
-                <ion-img src="https://images.pexels.com/photos/109275/pexels-photo-109275.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"></ion-img>
+                <ion-img src="..\assets\img\LAFLogo.png"></ion-img>
               </div>
               <ion-card-content class="ion-text-left">                
                 <ion-card-title class="title">{{ item.title }}</ion-card-title>
@@ -51,16 +48,16 @@
     </ion-row>
     <ion-row>
       <div class="ion-padding-horizontal wrapper">
-        <h5>
+        <h3>
           Found Items
-        </h5>
+        </h3>
       </div>
       <ion-col>
         <ion-slides [options]="option">
           <ion-slide *ngFor="let item of foundItems, let i = index">
             <ion-card class="card">
               <div class="img-wrapper">
-                <ion-img src="https://images.pexels.com/photos/109275/pexels-photo-109275.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"></ion-img>
+                <ion-img src="..\assets\img\LAFLogo.png"></ion-img>
               </div>
               <ion-card-content class="ion-text-left">                
                 <ion-card-title class="title">{{ item.title }}</ion-card-title>
